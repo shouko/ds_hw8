@@ -26,7 +26,7 @@ int main(int argc, char* argv[]){
 // Show statistical data of hash distribution
 	theTable.check();
 
-// Delete data from table according to file
+// Retrieve data from table according to file
 	ifstream ifb(argv[1], ifstream::in);
 	try{
 		while(getline(ifb, line)){
@@ -34,16 +34,20 @@ int main(int argc, char* argv[]){
 			string id;
 			getline(ss, id, '|');
 			getline(ss, temp, '\n');
-			theTable.tableDelete(id);
+			TableItemType itemStore;
+			theTable.tableRetrieve(id, itemStore);
+			// Print out retrieved key and data
+			cout << itemStore.getKey() << " " << itemStore.getMovie() << endl;
 		}
 	}catch(TableException e){
 		cout << e.getMessage() << endl;
 	}
 	theTable.check();
 
-	ifstream ifb(argv[1], ifstream::in);
+// Delete data from table according to file
+	ifstream ifc(argv[1], ifstream::in);
 	try{
-		while(getline(ifb, line)){
+		while(getline(ifc, line)){
 			stringstream ss(line);
 			string id;
 			getline(ss, id, '|');
