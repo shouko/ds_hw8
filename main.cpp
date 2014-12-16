@@ -20,7 +20,7 @@ int main(int argc, char* argv[]){
 		cout << e.getMessage() << endl;
 	}
 	theTable.check();
-	return 0;
+
 	ifstream ifb(argv[1], ifstream::in);
 	try{
 		while(getline(ifb, line)){
