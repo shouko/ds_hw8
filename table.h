@@ -75,7 +75,9 @@ class Movie : public KeyedItem
 public:
 	Movie() : KeyedItem() {};
 	Movie(const string& id, const string& mname) : KeyedItem(id), name(mname) {}
-	string getMovie() const;
+	string getMovie() const {
+		return name;
+	}
 
 private:
 	string name;
