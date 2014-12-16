@@ -163,7 +163,15 @@ void HashTable::tableInsert(TableItemType& newItem) throw(TableException){
 		}else{
 			ChainNode* nodePtr = table[hash_index];
 			for(int i = 1; i < block_size[hash_index]; i++){
+				// Detect if key exists already
+				if(nodePtr->item.getKey() == newItem.getKey()){
+					throw TableException("TableException: Duplicate key detected");
+				}
 				nodePtr = nodePtr->next;
+			}
+			// Detect if key exists already
+			if(nodePtr->item.getKey() == newItem.getKey()){
+				throw TableException("TableException: Duplicate key detected");
 			}
 			nodePtr->next = new ChainNode(newItem);
 		}
