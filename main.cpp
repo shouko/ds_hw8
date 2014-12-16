@@ -98,7 +98,9 @@ class HashTable
 {
 public:
 	HashTable() {
-		std::fill(block_size, block_size + 65535, 0);
+		std::fill(block_size, block_size + HASH_TABLE_SIZE, 0);
+		std::fill(table, table + HASH_TABLE_SIZE, (ChainNode*)NULL);
+		size = 0;
 	};
 	~HashTable();
 	void tableInsert(TableItemType& newItem) throw(TableException);
