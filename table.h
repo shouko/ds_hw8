@@ -179,10 +179,12 @@ void HashTable::tableDelete(KeyType searchKey) throw(TableException){
 	for(int i = 0; i < block_size[hash_index] ; i++){
 		if(nodePtr->item.getKey() == searchKey){
 			ChainNode* tbdp = nodePtr->next;
-			if(tbdp != NULL){
+			if(i != block_size[hash_index] - 1){
 				nodePtr->item = tbdp->item;
 				nodePtr->next = tbdp->next;
 				delete tbdp;
+			}else{
+				delete nodePtr;
 			}
 			block_size[hash_index]--;
 			size--;
