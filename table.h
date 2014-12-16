@@ -218,7 +218,7 @@ void HashTable::tableRetrieve(KeyType searchKey, TableItemType& tableItem) throw
 			nodePtr = nodePtr->next;
 		}
 	}
-	throw TableException("TableException: Item trying to delete does not exist");
+	throw TableException("TableException: Item trying to retrieve does not exist");
 }
 
 HashTable::~HashTable(){
