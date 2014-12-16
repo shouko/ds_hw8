@@ -175,7 +175,7 @@ void HashTable::tableInsert(TableItemType& newItem) throw(TableException){
 void HashTable::tableDelete(KeyType searchKey) throw(TableException){
 	int hash_index = hashIndex(searchKey);
 	ChainNode* nodePtr = table[hash_index];
-	cout << "Deleting " << hash_index << " " << block_size[hash_index] << endl;
+//	cout << "Deleting " << hash_index << " " << block_size[hash_index] << endl;
 	for(int i = 0; i < block_size[hash_index] ; i++){
 		if(nodePtr->item.getKey() == searchKey){
 			ChainNode* tbdp = nodePtr->next;
